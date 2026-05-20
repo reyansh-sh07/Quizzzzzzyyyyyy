@@ -26,7 +26,6 @@ const prevBtn = document.querySelector(".prevBtn");
 function displayQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
   question.textContent = currentQuestion.question;
-  nextBtn.disabled = currentQuestionIndex === questions.length - 1;
   prevBtn.disabled = currentQuestionIndex === 0;
   optionsContainer.innerHTML = "";
   progress.textContent = "Question " + (currentQuestionIndex + 1) + " of " + questions.length;
