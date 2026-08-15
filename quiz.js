@@ -1,4 +1,3 @@
-const questions = [
   const questions = [
   {
     question: "What does HTML stand for?",
@@ -109,7 +108,6 @@ const questions = [
     ],
     correctAnswer: "Integer"
   }
-];
 ];
 let answers = new Array(questions.length).fill(null);
 
