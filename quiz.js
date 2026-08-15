@@ -1,14 +1,115 @@
 const questions = [
-  { question: "What is 5 + 3?", options: ["6","7","8","9"], correctAnswer: "8" },
-  { question: "What is 10 - 4?", options: ["5","6","7","8"], correctAnswer: "6" },
-  { question: "What is 6 × 2?", options: ["10","11","12","13"], correctAnswer: "12" },
-  { question: "What is 15 ÷ 3?", options: ["3","4","5","6"], correctAnswer: "5" },
-  { question: "What is 9 + 7?", options: ["15","16","17","18"], correctAnswer: "16" },
-  { question: "Which planet is known as the Red Planet?", options: ["Earth","Mars","Jupiter","Venus"], correctAnswer: "Mars" },
-  { question: "What gas do plants absorb?", options: ["Oxygen","Nitrogen","Carbon Dioxide","Hydrogen"], correctAnswer: "Carbon Dioxide" },
-  { question: "What is the boiling point of water?", options: ["90°C","100°C","110°C","120°C"], correctAnswer: "100°C" },
-  { question: "Which organ pumps blood?", options: ["Brain","Lungs","Heart","Kidney"], correctAnswer: "Heart" },
-  { question: "What is 7 × 8?", options: ["54","56","58","60"], correctAnswer: "56" }
+  const questions = [
+  {
+    question: "What does HTML stand for?",
+    options: [
+      "Hyper Text Markup Language",
+      "High Text Machine Language",
+      "Hyperlink Text Management Language",
+      "Home Tool Markup Language"
+    ],
+    correctAnswer: "Hyper Text Markup Language"
+  },
+
+  {
+    question: "Which language is primarily used to add interactivity to web pages?",
+    options: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "SQL"
+    ],
+    correctAnswer: "JavaScript"
+  },
+
+  {
+    question: "Which CSS property is used to change the text color?",
+    options: [
+      "font-color",
+      "text-color",
+      "color",
+      "foreground"
+    ],
+    correctAnswer: "color"
+  },
+
+  {
+    question: "Which keyword is used to declare a constant in JavaScript?",
+    options: [
+      "var",
+      "let",
+      "const",
+      "constant"
+    ],
+    correctAnswer: "const"
+  },
+
+  {
+    question: "Which method is used to add an element to the end of an array in JavaScript?",
+    options: [
+      "push()",
+      "pop()",
+      "shift()",
+      "add()"
+    ],
+    correctAnswer: "push()"
+  },
+
+  {
+    question: "What does API stand for?",
+    options: [
+      "Application Programming Interface",
+      "Advanced Programming Integration",
+      "Application Process Interface",
+      "Automated Programming Interface"
+    ],
+    correctAnswer: "Application Programming Interface"
+  },
+
+  {
+    question: "Which HTTP method is commonly used to retrieve data from a server?",
+    options: [
+      "POST",
+      "GET",
+      "PUT",
+      "DELETE"
+    ],
+    correctAnswer: "GET"
+  },
+
+  {
+    question: "Which symbol is used for strict equality in JavaScript?",
+    options: [
+      "=",
+      "==",
+      "===",
+      "!="
+    ],
+    correctAnswer: "==="
+  },
+
+  {
+    question: "Which data structure follows the LIFO principle?",
+    options: [
+      "Queue",
+      "Stack",
+      "Array",
+      "Linked List"
+    ],
+    correctAnswer: "Stack"
+  },
+
+  {
+    question: "Which of the following is NOT a JavaScript data type?",
+    options: [
+      "String",
+      "Boolean",
+      "Integer",
+      "Undefined"
+    ],
+    correctAnswer: "Integer"
+  }
+];
 ];
 let answers = new Array(questions.length).fill(null);
 
@@ -61,11 +162,8 @@ nextBtn.addEventListener("click", () => {
     alert("Select an option first!");
     return;
   }
-  answers[currentQuestionIndex] = selectedAnswer;
 
-  if (selectedAnswer === questions[currentQuestionIndex].correctAnswer) {
-    score++;
-  }
+  answers[currentQuestionIndex] = selectedAnswer;
 
   currentQuestionIndex++;
   selectedAnswer = null;
@@ -73,6 +171,15 @@ nextBtn.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
     displayQuestion();
   } else {
+
+    score = answers.reduce((total, answer, index) => {
+      if (answer === questions[index].correctAnswer) {
+        return total + 1;
+      }
+
+      return total;
+    }, 0);
+
     quizContainer.innerHTML = `
       <h2>Quiz Completed 🎉</h2>
       <p>Your Score: ${score} / ${questions.length}</p>
