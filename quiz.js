@@ -194,11 +194,4 @@ prevBtn.addEventListener("click", () => {
 
 });
 
-
-
-
-
-
-
-
 displayQuestion();
